@@ -180,19 +180,22 @@ export const Contact: React.FC = () => {
                 </div>
               </div>
 
-              {/* Phone Card */}
+              {/* Phone / WhatsApp Card */}
               <div className="flex items-center justify-between p-4 rounded-2xl bg-white border border-[#E2EEF6] shadow-sm">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-[#F0F9FF] border border-[#BAE6FD] text-[#00ADEF] flex items-center justify-center">
                     <Phone className="w-4 h-4 text-[#00ADEF]" />
                   </div>
                   <div>
-                    <div className="text-[11px] text-[#6B7280] font-medium uppercase tracking-wider">Phone</div>
+                    <div className="text-[11px] text-[#6B7280] font-medium uppercase tracking-wider">Phone / WhatsApp</div>
                     <a
-                      href={`tel:${phoneClean}`}
-                      className="text-sm font-semibold text-[#111827] hover:text-[#00ADEF] transition-colors"
+                      href={`https://wa.me/${phoneClean}?text=Hi%20Anoop,%20I%20would%20like%20to%20discuss%20a%20website%20project.`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-semibold text-[#111827] hover:text-[#00ADEF] transition-colors inline-flex items-center gap-1.5"
                     >
-                      {directPhone}
+                      <span>{directPhone}</span>
+                      <span className="text-[10px] text-emerald-600 bg-emerald-50 border border-emerald-200 px-1.5 py-0.2 rounded-md font-normal">WhatsApp ↗</span>
                     </a>
                   </div>
                 </div>
@@ -205,9 +208,11 @@ export const Contact: React.FC = () => {
                     {copiedPhone ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
                   </button>
                   <a
-                    href={`tel:${phoneClean}`}
+                    href={`https://wa.me/${phoneClean}?text=Hi%20Anoop,%20I%20would%20like%20to%20discuss%20a%20website%20project.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-2 rounded-lg bg-[#111827] text-white text-xs hover:bg-[#00ADEF] transition-colors"
-                    title="Call Anoop"
+                    title="Open WhatsApp Chat"
                   >
                     <ArrowRight className="w-3.5 h-3.5" />
                   </a>
