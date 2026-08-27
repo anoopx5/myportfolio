@@ -65,6 +65,24 @@
     </script>
   </head>
   <body class="bg-white text-[#111827] antialiased selection:bg-[#00ADEF]/20 selection:text-[#0284C7] font-sans overflow-x-hidden">
+    <!-- Netlify Forms Build-Time Detection Form -->
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="business" />
+      <select name="projectType">
+        <option value="Business Website">Business Website</option>
+        <option value="Landing Page">Landing Page</option>
+        <option value="Ecommerce">Ecommerce</option>
+        <option value="Website Redesign">Website Redesign</option>
+        <option value="UI / UX">UI / UX</option>
+        <option value="Other">Other</option>
+      </select>
+      <textarea name="details"></textarea>
+    </form>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

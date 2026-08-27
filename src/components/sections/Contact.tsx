@@ -53,13 +53,20 @@ export const Contact: React.FC = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  const encodeFormData = (data: Record<string, string>) => {
+    return Object.keys(data)
+      .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
     try {
-      await submitInquiryToFirebase({
+      // 1. Submit to Firebase Firestore "inquiries" collection
+      const firebasePromise = submitInquiryToFirebase({
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
@@ -67,6 +74,24 @@ export const Contact: React.FC = () => {
         projectType: formData.projectType,
         details: formData.details
       });
+
+      // 2. Submit to Netlify Forms endpoint for detection and email notifications
+      const netlifyPromise = fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encodeFormData({
+          "form-name": "contact",
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          business: formData.business,
+          projectType: formData.projectType,
+          details: formData.details
+        })
+      }).catch((err) => console.warn("Netlify form submission notice:", err));
+
+      // Wait for submissions
+      await Promise.allSettled([firebasePromise, netlifyPromise]);
       setIsSubmitted(true);
     } catch (err) {
       console.error("Error submitting inquiry:", err);
@@ -260,7 +285,22 @@ export const Contact: React.FC = () => {
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form
+                  name="contact"
+                  method="POST"
+                  data-netlify="true"
+                  data-netlify-honeypot="bot-field"
+                  onSubmit={handleSubmit}
+                  className="space-y-5"
+                >
+                  {/* Hidden inputs for Netlify Form processing */}
+                  <input type="hidden" name="form-name" value="contact" />
+                  <p className="hidden">
+                    <label>
+                      Don’t fill this out if you're human: <input name="bot-field" />
+                    </label>
+                  </p>
+
                   <div className="border-b border-[#E2EEF6] pb-3">
                     <h3 className="text-xl font-bold text-[#111827]">
                       Project Inquiry
@@ -277,6 +317,7 @@ export const Contact: React.FC = () => {
                       </label>
                       <input
                         type="text"
+                        name="name"
                         value={formData.name}
                         onChange={(e) => {
                           setFormData({ ...formData, name: e.target.value });
@@ -296,6 +337,7 @@ export const Contact: React.FC = () => {
                       </label>
                       <input
                         type="email"
+                        name="email"
                         value={formData.email}
                         onChange={(e) => {
                           setFormData({ ...formData, email: e.target.value });
@@ -317,6 +359,7 @@ export const Contact: React.FC = () => {
                       </label>
                       <input
                         type="tel"
+                        name="phone"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="+91 00000 00000"
@@ -330,6 +373,7 @@ export const Contact: React.FC = () => {
                       </label>
                       <input
                         type="text"
+                        name="business"
                         value={formData.business}
                         onChange={(e) => setFormData({ ...formData, business: e.target.value })}
                         placeholder="e.g. Brand Name"
@@ -343,6 +387,7 @@ export const Contact: React.FC = () => {
                       Project Type <span className="text-[#00ADEF]">*</span>
                     </label>
                     <select
+                      name="projectType"
                       value={formData.projectType}
                       onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
                       className="w-full px-4 py-3 rounded-2xl bg-[#F0F9FF]/40 border border-[#E2EEF6] text-sm text-[#111827] focus:outline-none focus:bg-white focus:border-[#00ADEF] transition-all cursor-pointer"
@@ -361,6 +406,7 @@ export const Contact: React.FC = () => {
                     </label>
                     <textarea
                       rows={4}
+                      name="details"
                       value={formData.details}
                       onChange={(e) => {
                         setFormData({ ...formData, details: e.target.value });
