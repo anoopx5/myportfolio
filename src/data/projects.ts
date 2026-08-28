@@ -9,7 +9,7 @@ export const projects: Project[] = [
     filterCategory: "Real Estate",
     description: "A premium real estate website designed to create trust, communicate property services and give the brand a modern professional presence.",
     url: "https://agentily.netlify.app/",
-    image: "/projects/agentily.png",
+    image: "/projects/agentily.webp",
     highlights: [
       "Trust-focused property presentation",
       "Interactive listing exploration",
@@ -58,7 +58,7 @@ export const projects: Project[] = [
     filterCategory: "Healthcare",
     description: "A clean healthcare website designed around trust, clarity and appointment-focused user experience.",
     url: "https://dentflare.netlify.app/",
-    image: "/projects/dentflare.png",
+    image: "/projects/dentflare.webp",
     highlights: [
       "Patient-first approachable UX",
       "Direct appointment booking flow",
@@ -107,7 +107,7 @@ export const projects: Project[] = [
     filterCategory: "Ecommerce",
     description: "A modern ecommerce experience focused on product presentation, category discovery and a refined Islamic fashion brand identity.",
     url: "https://msislamicstore.netlify.app/",
-    image: "/projects/ms-islamic-store.png",
+    image: "/projects/ms-islamic-store.webp",
     highlights: [
       "Refined fashion brand identity",
       "Category discovery & filtering",
@@ -156,7 +156,7 @@ export const projects: Project[] = [
     filterCategory: "Restaurant",
     description: "A visually rich restaurant website combining premium typography, food storytelling and reservation-focused interaction.",
     url: "https://saffronamber.netlify.app/",
-    image: "/projects/saffron-and-ember.png",
+    image: "/projects/saffron-and-ember.webp",
     highlights: [
       "Cinematic gastronomy storytelling",
       "Tasting menu presentation",
@@ -205,7 +205,7 @@ export const projects: Project[] = [
     filterCategory: "Beauty",
     description: "A sophisticated beauty salon website designed around premium branding, service presentation and appointment conversion.",
     url: "https://velorabeautysaloon.netlify.app/",
-    image: "/projects/velora.png",
+    image: "/projects/velora.webp",
     highlights: [
       "High-end beauty salon aesthetic",
       "Service & treatment menu hierarchy",

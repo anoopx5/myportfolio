@@ -72,6 +72,9 @@ export const BrowserMockup: React.FC<BrowserMockupProps> = ({
           <img
             src={project.image}
             alt={`${project.name} preview`}
+            width={800}
+            height={500}
+            decoding="async"
             className="w-full h-full object-cover object-top group-hover:scale-[1.025] transition-transform duration-500 ease-out"
             loading="lazy"
             onError={() => setImageError(true)}

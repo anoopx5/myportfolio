@@ -94,15 +94,17 @@ export const Hero: React.FC<HeroProps> = ({ onSelectProject }) => {
 
             {/* Portrait Image Container */}
             <div className="relative w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[440px] aspect-[4/5] flex items-end justify-center overflow-hidden">
-              <picture>
-                <source srcSet={portraitWebp} type="image/webp" />
-                <img
-                  src="/anoop-portrait.png"
-                  alt="Anoop Kumar - Frontend & Web Developer"
-                  className="w-full h-full object-contain object-bottom monochrome-portrait hero-mask-bottom drop-shadow-md select-none pointer-events-none"
-                  loading="eager"
-                />
-              </picture>
+              <img
+                src={portraitWebp}
+                alt="Anoop Kumar - Frontend & Web Developer"
+                width={650}
+                height={719}
+                decoding="async"
+                loading="eager"
+                // @ts-ignore
+                fetchpriority="high"
+                className="w-full h-full object-contain object-bottom monochrome-portrait hero-mask-bottom drop-shadow-md select-none pointer-events-none"
+              />
             </div>
 
           </div>
