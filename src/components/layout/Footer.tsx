@@ -68,20 +68,20 @@ export const Footer: React.FC = () => {
             </h4>
             <div className="flex flex-col space-y-2 text-sm">
               <a
-                href="mailto:anoopkumarx9@gmail.com"
+                href="mailto:nexawebindia@gmail.com"
                 className="text-[#4B5563] hover:text-[#00ADEF] transition-colors flex items-center gap-2"
               >
                 <Mail className="w-4 h-4 text-[#00ADEF]" />
-                <span>anoopkumarx9@gmail.com</span>
+                <span>nexawebindia@gmail.com</span>
               </a>
               <a
-                href="https://wa.me/919847805902?text=Hi%20Anoop,%20I%20would%20like%20to%20discuss%20a%20website%20project."
+                href="https://wa.me/919497035902?text=Hi%20Anoop,%20I%20would%20like%20to%20discuss%20a%20website%20project."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#4B5563] hover:text-[#00ADEF] transition-colors flex items-center gap-2"
               >
                 <Phone className="w-4 h-4 text-[#00ADEF]" />
-                <span>+91 9847805902 (WhatsApp)</span>
+                <span>+91 9497035902 (WhatsApp)</span>
               </a>
               <a
                 href="https://github.com"

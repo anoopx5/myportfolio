@@ -27,9 +27,9 @@ export const Contact: React.FC = () => {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
 
-  const email = "anoopkumarx9@gmail.com";
-  const directPhone = "+91 9847805902";
-  const phoneClean = "+919847805902";
+  const email = "nexawebindia@gmail.com";
+  const directPhone = "+91 9497035902";
+  const phoneClean = "+919497035902";
 
   const projectTypes = [
     "Business Website",
