@@ -36,6 +36,7 @@ export async function submitInquiryToFirebase(inquiry: InquiryPayload): Promise<
       business: (inquiry.business || "").trim(),
       projectType: inquiry.projectType,
       details: inquiry.details.trim(),
+      targetEmail: "nexawebindia@gmail.com",
       status: "unread",
       createdAt: serverTimestamp(),
       submittedAt: new Date().toISOString(),
